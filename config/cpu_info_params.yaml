@@ -1,0 +1,15 @@
+mqtt:
+  client:
+    protocol: 4      # MQTTv311
+  connection:
+    host: localhost
+    port: 1883
+    keepalive: 60
+serializer: json:dumps
+deserializer: json:loads
+bridge:
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: mqtt_bridge.msg:computer_info
+    topic_from: cpu_info
+    topic_to: /cpu_info
+
